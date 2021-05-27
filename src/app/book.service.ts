@@ -29,8 +29,8 @@ createBook(book:object):Observable<Object>{
 }
 
 
-updateBook(code:number, value:any):Observable<Object>{
-  return  this.http.put('http://localhost:8080/book/'+code,value) 
+updateBook(code:number, book:object):Observable<Object>{
+  return  this.http.put('http://localhost:8080/book/'+code,book) 
 }
 
 deleteBook(code:number){

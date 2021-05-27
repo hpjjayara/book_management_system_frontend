@@ -11,10 +11,17 @@ import { Observable } from 'rxjs';
 })
 export class BookListComponent implements OnInit {
   books:Observable<Book[]>|any;
+  dropdownGetItem: number | any;
+  actions: Array<number> | any;
+  tableName = "";
 
   constructor(private bookService: BookService, private router: Router) { }
 
   ngOnInit(): void {
+    this.bookService.bookIds().subscribe(data => {
+      this.actions = data;
+      console.log(this.actions)
+    });
     this.reloadData();
   }
 
@@ -22,20 +29,32 @@ export class BookListComponent implements OnInit {
     this.books = this.bookService.getBooksList();
   }
 
-  deletebook(id: number) {
-    this.bookService.deleteBook(id).subscribe(data => {
+  deletebook(code: number) {
+    this.bookService.deleteBook(code).subscribe(data => {
           console.log(data);
           this.reloadData();
         },
         error => console.log(error));
   }
 
-  bookDetails(id: number){
-    this.router.navigate(['details', id]);
+  bookDetails(code: number){
+    this.router.navigate(['details', code]);
   }
 
-  updateBook(id:number){
-    this.router.navigate(['update',id]);
+  updateBook(code:number){
+    this.router.navigate(['update',code]);
+  }
+
+  selectGetId(item: number) {
+    console.log(item)
+    this.dropdownGetItem = item;
+
+    this.bookService.getBook(item).subscribe(data => {
+      this.books = data; // <- after this point you have the result 
+      console.log(this.books);
+    });
+    this.tableName = "SELECTED BOOK'S DETAILS";
+
   }
 
 }

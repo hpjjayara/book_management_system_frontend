@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from '../book.service';
 import { Book } from '../book';
+import { waitForAsync } from '@angular/core/testing';
 
 @Component({
   selector: 'app-update-book',
@@ -10,7 +11,7 @@ import { Book } from '../book';
 })
 export class UpdateBookComponent implements OnInit {
 
-  id:number|any;
+  code:number|any;
   book:Book|any;
 
   constructor(private route: ActivatedRoute,private router: Router,private bookService:BookService) { }
@@ -18,19 +19,19 @@ export class UpdateBookComponent implements OnInit {
   ngOnInit(): void {
     this.book = new Book();
 
-    this.id = this.route.snapshot.params['id'];
+    this.code = this.route.snapshot.params['code'];
 
-    this.bookService.getBook(this.id).subscribe(data => {
-      console.log(data)
-      this.book = data;
+    this.bookService.getBook(this.code).subscribe(data => {
+        console.log(data);
+        this.book = data[0];
     }, error => console.log(error));
   }
 
   updateBook() {
-    this.bookService.updateBook(this.id, this.book)
-      .subscribe(data => console.log(data), error => console.log(error));
-        this.book = new Book();
-        this.gotoList();
+     this.bookService.updateBook(this.code, this.book)
+      .subscribe(data => 
+        console.log(data), error => console.log(error));
+      this.gotoList();
   }
 
   onSubmit() {
@@ -38,6 +39,7 @@ export class UpdateBookComponent implements OnInit {
   }
 
   gotoList() {
+
     this.router.navigate(['/books']);
   }
 

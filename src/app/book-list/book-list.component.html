@@ -3,6 +3,17 @@
       <h2>Book List</h2>
     </div>
     <div class="panel-body">
+      <div class="btn-group " dropdown>
+       <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+       aria-controls="dropdown-basic" style="margin-top: 30px; margin-left: 1100px; margin-right: 5px; ">
+            GET BOOK ID {{dropdownGetItem}} <span class="caret"></span>
+        </button>
+        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+            <li *ngFor="let item of actions" role="menuitem"><a class="dropdown-item"
+                    (click)="selectGetId(item)">{{item}}</a></li>
+
+        </ul>
+    </div>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -19,10 +30,9 @@
             <td>{{book.name}}</td>
             <td>{{book.description}}</td>
             <td>{{book.stockCount}}</td>
-            <td><button (click)="deletebook(book.code)" class="btn btn-danger" style="margin-top: 20px; margin-left: 20px">Delete</button>
-                <button (click)="bookDetails(book.code)" class="btn btn-info" style="margin-top: 20px; margin-left: 20px ; margin-right: 20px">Details</button>
-                <button (click)="updateBook(book.code)" class="btn btn-info" style="margin-top: 20px; margin-left: 20px">Upadate</button>
-            </td>
+            <td><button (click)="deletebook(book.code)" class="btn btn-danger" style="margin-top: 20px; margin-left: 20px;"><i class="fa fa-trash"></i></button></td>
+            <td><button (click)="bookDetails(book.code)" class="btn btn-info" style="margin-top: 20px; margin-left: 20px; margin-right: 20px;"><i class="fas fa-info-circle"></i></button></td>
+            <td><button (click)="updateBook(book.code)" class="btn btn-primary" style="margin-top: 20px; margin-right: 20px; margin-left: 20px;"><i class="fas fa-edit"></i></button></td>
           </tr>
         </tbody>
       </table>
