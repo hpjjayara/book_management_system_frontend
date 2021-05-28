@@ -37,7 +37,7 @@ deleteBook(code:number){
   return  this.http.delete('http://localhost:8080/book/'+code,{ responseType: 'text' }) 
 }
 
-bookIds(){
+bookIds():Observable<any>{
   return this.http.get('http://localhost:8080/book/bookIds')
 }
 

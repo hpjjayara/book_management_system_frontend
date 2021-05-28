@@ -11,17 +11,18 @@ import { Observable } from 'rxjs';
 })
 export class BookListComponent implements OnInit {
   books:Observable<Book[]>|any;
-  dropdownGetItem: number | any;
-  actions: Array<number> | any;
-  tableName = "";
+  // dropdownGetItem: number | any;
+  // actions: Array<number> | any;
+  // tableName = "";
+  // booksList: Object | any;
 
   constructor(private bookService: BookService, private router: Router) { }
 
   ngOnInit(): void {
-    this.bookService.bookIds().subscribe(data => {
-      this.actions = data;
-      console.log(this.actions)
-    });
+    // this.bookService.bookIds().subscribe(data => {
+    //   this.actions = data;
+    //   console.log(this.actions)
+    // });
     this.reloadData();
   }
 
@@ -45,16 +46,16 @@ export class BookListComponent implements OnInit {
     this.router.navigate(['update',code]);
   }
 
-  selectGetId(item: number) {
-    console.log(item)
-    this.dropdownGetItem = item;
+  // selectGetId(item: number) {
+  //   console.log(item)
+  //   this.dropdownGetItem = item;
 
-    this.bookService.getBook(item).subscribe(data => {
-      this.books = data; // <- after this point you have the result 
-      console.log(this.books);
-    });
-    this.tableName = "SELECTED BOOK'S DETAILS";
+  //   this.bookService.getBook(item).subscribe(data => {
+  //     this.books = data; // <- after this point you have the result 
+  //     console.log(this.booksList);
+  //   });
+  //   this.tableName = "SELECTED BOOK'S DETAILS";
 
-  }
+  // }
 
 }
