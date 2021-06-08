@@ -3,8 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.5.
 
 ## Author 
-Name : Jayathi Hewapathirana 
-Email : hpj.jayathi@gmail.com
+Name : Jayathi Hewapathirana          Email : hpj.jayathi@gmail.com
 
 ## Development server
 
