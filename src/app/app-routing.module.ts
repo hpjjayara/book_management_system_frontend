@@ -1,3 +1,8 @@
+/**
+ * @author Jayathi_Jayara
+ * @version 1.0
+ */
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BookDetailsComponent } from './book-details/book-details.component';
