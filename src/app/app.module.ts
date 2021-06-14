@@ -9,6 +9,7 @@ import { BookListComponent } from './book-list/book-list.component';
 
 import { UpdateBookComponent } from './update-book/update-book.component';
 import { HttpClientModule } from '@angular/common/http';
+// import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    // CarouselModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
